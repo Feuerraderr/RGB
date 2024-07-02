@@ -31,9 +31,9 @@ final class ViewController: UIViewController {
         
         sliderSetup()
         
-        redSlider.value = 0.2
-        greenSlider.value = 0.5
-        blueSlider.value = 0.8
+        redSlider.value = Float.random(in: 0...1)
+        greenSlider.value = Float.random(in: 0...1)
+        blueSlider.value = Float.random(in: 0...1)
         
         setColorValue(bySlider: redSlider)
         setColorValue(bySlider: greenSlider)
@@ -44,20 +44,11 @@ final class ViewController: UIViewController {
     }
     
     
-    @IBAction func redSliderDidChange() {
-        setColorValue(bySlider: redSlider)
+    @IBAction func sliderValueDidChange(_ sender: UISlider) {
         setViewColor()
+        setColorValue(bySlider: sender)
     }
     
-    @IBAction func greenSliderDidChange() {
-        setColorValue(bySlider: greenSlider)
-        setViewColor()
-    }
-    
-    @IBAction func blueSliderDidChange() {
-        setColorValue(bySlider: blueSlider)
-        setViewColor()
-    }
     
     
     
@@ -77,9 +68,9 @@ final class ViewController: UIViewController {
     
     private func setViewColor() {
         colorView.backgroundColor = .init(
-            red: CGFloat(redSlider.value),
-            green: CGFloat(greenSlider.value),
-            blue: CGFloat(blueSlider.value),
+            red: redSlider.value.cgFloat(),
+            green: greenSlider.value.cgFloat(),
+            blue: blueSlider.value.cgFloat(),
             alpha: 1
         )
     }
@@ -87,12 +78,21 @@ final class ViewController: UIViewController {
     private func setColorValue(bySlider slider: UISlider) {
         switch slider {
         case redSlider:
-            redValueLabel.text = String(format: "%.2f", redSlider.value)
+            redValueLabel.text = string(from: redSlider)
         case greenSlider:
-            greenValueLabel.text = String(format: "%.2f", greenSlider.value)
+            greenValueLabel.text = string(from: greenSlider)
         default:
-            blueValueLabel.text = String(format: "%.2f", blueSlider.value)
+            blueValueLabel.text = string(from: blueSlider)
         }
+    }
+    
+    private func string(from slider: UISlider) -> String {
+        String(format: "%.2f", slider.value)
     }
 }
 
+extension Float {
+    func cgFloat() -> CGFloat {
+        CGFloat(self)
+    }
+}
