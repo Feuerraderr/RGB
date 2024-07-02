@@ -83,16 +83,28 @@
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4DN-N4-xBS">
                                                 <rect key="frame" x="-2" y="0.0" width="258" height="31"/>
+                                                <connections>
+                                                    <action selector="redSliderDidChange" destination="BYZ-38-t0r" eventType="valueChanged" id="wzT-b9-5ul"/>
+                                                </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="KUB-lU-Pyc">
                                                 <rect key="frame" x="-2" y="90" width="258" height="31"/>
+                                                <connections>
+                                                    <action selector="greenSliderDidChange" destination="BYZ-38-t0r" eventType="valueChanged" id="yU7-Bz-MH4"/>
+                                                </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ao9-mG-7eC">
                                                 <rect key="frame" x="-2" y="180" width="258" height="31"/>
+                                                <connections>
+                                                    <action selector="blueSliderDidChange" destination="BYZ-38-t0r" eventType="valueChanged" id="3cR-RB-3Vw"/>
+                                                </connections>
                                             </slider>
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="djY-Mq-4N8" secondAttribute="height" multiplier="361:210" id="oUA-3J-P86"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -123,7 +135,7 @@
     </scenes>
     <resources>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

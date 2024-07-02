@@ -35,11 +35,30 @@ final class ViewController: UIViewController {
         greenSlider.value = 0.5
         blueSlider.value = 0.8
         
-        redValueLabel.text = redSlider.value.formatted()
-        greenValueLabel.text = greenSlider.value.formatted()
-        blueValueLabel.text = blueSlider.value.formatted()
+        setColorValue(bySlider: redSlider)
+        setColorValue(bySlider: greenSlider)
+        setColorValue(bySlider: blueSlider)
+        
+        setViewColor()
         
     }
+    
+    
+    @IBAction func redSliderDidChange() {
+        setColorValue(bySlider: redSlider)
+        setViewColor()
+    }
+    
+    @IBAction func greenSliderDidChange() {
+        setColorValue(bySlider: greenSlider)
+        setViewColor()
+    }
+    
+    @IBAction func blueSliderDidChange() {
+        setColorValue(bySlider: blueSlider)
+        setViewColor()
+    }
+    
     
     
     private func sliderSetup() {
@@ -54,6 +73,26 @@ final class ViewController: UIViewController {
         blueSlider.minimumValue = minimumValue
         blueSlider.maximumValue = maximumValue
         blueSlider.minimumTrackTintColor = .systemBlue
+    }
+    
+    private func setViewColor() {
+        colorView.backgroundColor = .init(
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
+            alpha: 1
+        )
+    }
+    
+    private func setColorValue(bySlider slider: UISlider) {
+        switch slider {
+        case redSlider:
+            redValueLabel.text = String(format: "%.2f", redSlider.value)
+        case greenSlider:
+            greenValueLabel.text = String(format: "%.2f", greenSlider.value)
+        default:
+            blueValueLabel.text = String(format: "%.2f", blueSlider.value)
+        }
     }
 }
 
